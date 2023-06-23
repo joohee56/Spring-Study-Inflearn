@@ -9,6 +9,7 @@ import java.lang.annotation.*;
         ElementType.TYPE, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+@Inherited
 @Qualifier("mainDiscountPolicy")
 public @interface MainDiscountPolicy {
 }
