@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -13,8 +14,10 @@ import javax.annotation.PreDestroy;
 import static org.assertj.core.api.Assertions.*;
 
 public class SingletonWithPrototypeTest1 {
+
     @Scope("prototype")
     static class PrototypeBean {
+
         private int count = 0;
 
         public void addCount() {
@@ -50,6 +53,7 @@ public class SingletonWithPrototypeTest1 {
             return count;
         }
     }
+
     @Test
     void prototypeFind() {
         AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(PrototypeBean.class);
