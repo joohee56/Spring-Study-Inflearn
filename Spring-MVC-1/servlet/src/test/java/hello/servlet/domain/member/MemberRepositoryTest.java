@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class MemberRepositoryTest {
+class MemberRepositoryTest {
     MemberRepository memberRepository = MemberRepository.getInstance();
 
     @AfterEach
