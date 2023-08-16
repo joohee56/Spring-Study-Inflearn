@@ -39,8 +39,4 @@ public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
         return paramMap;
     }
-
-    private MyView viewResolver(String viewName) {
-        return new MyView("/WEB-INF/views/" + viewName + ".jsp");
-    }
 }
