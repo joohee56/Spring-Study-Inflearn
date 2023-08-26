@@ -45,8 +45,8 @@ public class BasicItemController {
         return "basic/addForm";
     }
 
-    /*
-    @PostMapping("/add")
+
+//    @PostMapping("/add")
     public String addItemV1(@RequestParam String itemName, @RequestParam int price, @RequestParam Integer quantity, Model model) {
         Item item = new Item();
         item.setItemName(itemName);
@@ -59,12 +59,30 @@ public class BasicItemController {
 
         return "basic/item";
     }
-    */
 
-    @PostMapping("/add")
-    public String addItem2(@ModelAttribute("item") Item item, Model model) {
+//    @PostMapping("/add")
+    public String addItem2(@ModelAttribute(name = "item") Item item, Model model) {
         itemRepository.save(item);
 //        model.addAttribute("item", item);   //자동 추가, 생략 가능
+        return "basic/item";
+    }
+
+    /**
+     * @ModelAttribute name 생략 가능
+     * 생략 시 model에 저장되는 name은 클래스명 첫 글자만 소문자로 등록 Item -> item
+     */
+//    @PostMapping("/add")
+    public String addItem3(@ModelAttribute Item item, Model model) {
+        itemRepository.save(item);
+        return "basic/item";
+    }
+
+    /**
+     * @ModelAttribute 자체 생략
+     */
+    @PostMapping("/add")
+    public String addItem4(Item item, Model model) {
+        itemRepository.save(item);
         return "basic/item";
     }
 }
