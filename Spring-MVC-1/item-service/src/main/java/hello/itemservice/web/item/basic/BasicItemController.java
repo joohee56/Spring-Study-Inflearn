@@ -80,11 +80,20 @@ public class BasicItemController {
     /**
      * @ModelAttribute 자체 생략
      */
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItem4(Item item, Model model) {
         itemRepository.save(item);
         return "basic/item";
     }
+
+    /**
+     * PRG - Post/Redirect/Get
+     */
+   @PostMapping("/add")
+   public String addItemV5(Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
+   }
 
     @GetMapping("/{itemId}/edit")
     public String editForm(@PathVariable Long itemId, Model model) {
