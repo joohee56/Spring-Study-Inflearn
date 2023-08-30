@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class ItemRepositoryTest {
+class ItemRepositoryTest {
 
     ItemRepository itemRepository = new ItemRepository();
 
