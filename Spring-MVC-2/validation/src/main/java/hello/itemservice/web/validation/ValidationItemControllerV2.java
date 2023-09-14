@@ -29,11 +29,11 @@ public class ValidationItemControllerV2 {
     private final ItemRepository itemRepository;
     private final ItemValidator itemValidator;
 
-    @InitBinder
-    public void init(WebDataBinder dataBinder) {
-        log.info("init binder {}", dataBinder);
-        dataBinder.addValidators(itemValidator);
-    }
+//    @InitBinder
+//    public void init(WebDataBinder dataBinder) {
+//        log.info("init binder {}", dataBinder);
+//        dataBinder.addValidators(itemValidator);
+//    }
 
     @GetMapping
     public String items(Model model) {
