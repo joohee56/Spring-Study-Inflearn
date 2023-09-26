@@ -9,11 +9,18 @@ import java.util.UUID;
 
 @Slf4j
 public class LogFilter implements Filter {
+
+    /**
+     * 필터 초기화
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         log.info("log filter init");
     }
 
+    /**
+     * 필터 로직
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -31,6 +38,9 @@ public class LogFilter implements Filter {
         }
     }
 
+    /**
+     * 필터 삭제
+     */
     @Override
     public void destroy() {
         log.info("log filter destory");
