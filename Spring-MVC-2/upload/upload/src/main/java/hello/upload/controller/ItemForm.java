@@ -9,6 +9,6 @@ import java.util.List;
 public class ItemForm {
     private Long itemId;
     private String itemName;
-    private List<MultipartFile> imageFiles;
-    private MultipartFile attachFile;
+    private List<MultipartFile> imageFiles;     //이미지 여러 장 전송
+    private MultipartFile attachFile;           //첨부파일 한 개 전송
 }

@@ -38,7 +38,7 @@ public class ItemController {
     }
 
     /**
-     * 아이템 저장
+     * 아이템 저장, 아이템 조회 화면으로 리다이렉트
      */
     @PostMapping("/items/new")
     public String saveItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
@@ -68,7 +68,8 @@ public class ItemController {
     }
 
     /**
-     * 이미지 조회
+     * <img> 태그로 이미지 조회
+     * UrlResource로 경로에 저장된 이미지를 읽어서, @ResponseBody로 이미지 바이너리를 반환
      */
     @ResponseBody
     @GetMapping("/images/{filename}")
@@ -78,6 +79,9 @@ public class ItemController {
 
     /**
      * 첨부파일 다운로드
+     * 파일 다운로드 시, 권한 체크를 상황을 위해 이미지 id를 파라미터로 전달
+     * 다운로드를 위해선 Content-Disposition 헤더 추가해야 한다.
+     * 다운로드 시 고객이 업로드한 파일명을 사용하기 위해 filename은 uploadFileName 사용
      */
     @GetMapping("/attach/{itemId}")
     public ResponseEntity<Resource> downloadAttach(@PathVariable Long itemId) throws MalformedURLException {

@@ -22,14 +22,21 @@ import java.util.Collection;
 @RequestMapping("/servlet/v2")
 public class ServletUploadControllerV2 {
 
-    @Value("${file.dir}")
-    private String fileDir;
 
+    @Value("${file.dir}")
+    private String fileDir;     //application.properties에 저장되어 있는 경로 가져옴
+
+    /**
+     * 등록 폼으로 이동
+     */
     @GetMapping("/upload")
     public String newFile() {
         return "upload-form";
     }
 
+    /**
+     * 파일 업로드
+     */
     @PostMapping("/upload")
     public String saveFileV1(HttpServletRequest request) throws ServletException, IOException {
         log.info("request={}", request);
@@ -49,8 +56,7 @@ public class ServletUploadControllerV2 {
             }
 
             //편의 메서드
-            //content-disposition; filename
-            log.info("submittedFileName={}", part.getSubmittedFileName());
+            log.info("submittedFileName={}", part.getSubmittedFileName());  //content-disposition; filename
             log.info("size={}", part.getSize());    //part body size
 
             //데이터 읽기
