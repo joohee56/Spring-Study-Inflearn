@@ -10,7 +10,11 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 /**
- * 트랜잭션 - 트랜잭션 매니저
+ * 트랜잭션 - 트랜잭션 동기화 매니저
+ *
+ * dataSource.getConnection()
+ * JdbcUtils.closeConnection(con);
+ * ↓
  * DataSourceUtils.getConnection()
  * DataSourceUtils.releaseConnection()
  */
