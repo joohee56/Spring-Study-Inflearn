@@ -30,6 +30,7 @@ public class UncheckedAppTest {
     static class Controller {
         Service service = new Service();
 
+        //checked 예외와 달리 runtime 예외이기 때문에 불필요한 throws 구문이 사라졌다.
         public void request() {
             service.logic();
         }
@@ -39,6 +40,7 @@ public class UncheckedAppTest {
         Repository repository = new Repository();
         NetworkClient networkClient = new NetworkClient();
 
+        //checked 예외와 달리 runtime 예외이기 때문에 불필요한 throws 구문이 사라졌다.
         public void logic() {
             repository.call();
             networkClient.call();
@@ -46,6 +48,7 @@ public class UncheckedAppTest {
     }
 
     static class NetworkClient {
+
         public void call() {
             throw new RuntimeConnectionException("연결 실패");
         }
@@ -75,6 +78,9 @@ public class UncheckedAppTest {
 
         }
 
+        /**
+         * 현재 예외를 발생시킨 예외(cause)를 포함한다. -> stackTrace에서 출력하기 위함
+         */
         public RuntimeSQLException(Throwable cause) {
             super(cause);
         }
