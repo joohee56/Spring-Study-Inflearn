@@ -12,7 +12,7 @@ import static hello.jdbc.connection.ConnectionConst.*;
 import static org.assertj.core.api.Assertions.*;
 
 /**
- * 기본 동작, 트랜잭션이 없어서 문제 발생
+ * 기본 동작, 트랜잭션이 없으므로 데이터 정합성의 문제 발생
  */
 public class MemberServiceV1Test {
 
@@ -30,6 +30,9 @@ public class MemberServiceV1Test {
         memberService = new MemberServiceV1(memberRepository);
     }
 
+    /**
+     * 테스트에 영향을 주지 않기 위해 테스트 종료 때마다 사용한 데이터 제거
+     */
     @AfterEach
     void after() throws SQLException {
         memberRepository.delete(MEMBER_A);

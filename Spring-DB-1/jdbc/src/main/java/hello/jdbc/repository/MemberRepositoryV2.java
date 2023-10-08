@@ -71,6 +71,9 @@ public class MemberRepositoryV2 {
         }
     }
 
+    /**
+     * 트랜잭션 내의 쿼리들은 같은 커넥션을 사용하기 위해 파라미터로 커넥션 객체 전달
+     */
     public Member findById(Connection con, String memberId) throws SQLException {
         String sql = "select * from member where member_id = ?";
 
