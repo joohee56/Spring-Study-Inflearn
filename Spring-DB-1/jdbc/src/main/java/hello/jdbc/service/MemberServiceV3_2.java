@@ -17,10 +17,12 @@ import java.sql.SQLException;
 @Slf4j
 public class MemberServiceV3_2 {
 
+    //트랜잭션 템플릿 주입
     private final TransactionTemplate txTemplate;
     private final MemberRepositoryV3 memberRepository;
 
     public MemberServiceV3_2(PlatformTransactionManager transactionManager, MemberRepositoryV3 memberRepository) {
+        //트랜잭션 템플릿은 트랜잭션 매니저를 필요로 한다.
         this.txTemplate = new TransactionTemplate(transactionManager);
         this.memberRepository = memberRepository;
     }

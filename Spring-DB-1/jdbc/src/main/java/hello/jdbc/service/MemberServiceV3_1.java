@@ -19,17 +19,18 @@ import java.sql.SQLException;
 @RequiredArgsConstructor
 public class MemberServiceV3_1 {
 
+    //트랜잭션 매니저 주입
     private final PlatformTransactionManager transactionManager;
     private final MemberRepositoryV3 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
-        //트랜잭션 시작
+        //트랜잭션 시작, 트랜잭션 상태 정보가 포함된 status 반환
         TransactionStatus status = transactionManager.getTransaction(new DefaultTransactionDefinition());
 
         try {
             //비지니스 로직
-            bizLogic(fromId, toId, money);
-            transactionManager.commit(status);  //성공시 커밋
+            bizLogic(fromId, toId, money);          //con 객체 전달 X
+            transactionManager.commit(status);      //성공시 커밋
         } catch (Exception e) {
             transactionManager.rollback(status);    //실패시 롤백
             throw new IllegalStateException(e);

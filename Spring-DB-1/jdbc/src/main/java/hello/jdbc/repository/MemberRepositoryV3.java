@@ -10,13 +10,13 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 /**
- * 트랜잭션 - 트랜잭션 동기화 매니저
+ * 트랜잭션 - 트랜잭션 매니저
  *
- * dataSource.getConnection()
- * JdbcUtils.closeConnection(con);
- * ↓
- * DataSourceUtils.getConnection()
- * DataSourceUtils.releaseConnection()
+ * 1. 트랜잭션 동기화 매니저 사용
+ * DataSource.getConnection(); → DataSourceUtils.getConnection();
+ * JdbcUtils.closeConnection(con); → DataSourceUtils.releaseConnection();
+ *
+ * 2. 파라미터에 con 모두 제거 (트랜잭션 동기화 매니저 사용)
  */
 @Slf4j
 public class MemberRepositoryV3 {
@@ -77,8 +77,6 @@ public class MemberRepositoryV3 {
             close(con, pstmt, rs);
         }
     }
-
-
 
     public void update(String memberId, int money) throws SQLException {
         String sql = "update member set money=? where member_id=?";

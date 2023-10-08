@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 트랜잭션 - @Transactional AOP
  */
 @Slf4j
-@SpringBootTest
+@SpringBootTest //스프링 AOP을 사용하기 위해선, 스프링 컨테이너 필요
 public class MemberServiceV3_3Test {
 
     public static final String MEMBER_A = "memberA";
@@ -47,6 +47,7 @@ public class MemberServiceV3_3Test {
         memberRepository.delete(MEMBER_EX);
     }
 
+    //설정 클래스 → 빈 수동 등록
     @TestConfiguration
     static class TestConfig {
         @Bean
@@ -54,6 +55,7 @@ public class MemberServiceV3_3Test {
             return new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         }
 
+        //트랜잭션 매니저 빈 등록 : 트랜잭션 AOP는 스프링 빈에 등록된 트랜잭션 매니저를 사용한다.
         @Bean
         PlatformTransactionManager transactionManager() {
             return new DataSourceTransactionManager(dataSource());
@@ -70,6 +72,9 @@ public class MemberServiceV3_3Test {
         }
     }
 
+    /**
+     * AOP 프록시 확인 테스트
+     */
     @Test
     void AopCheck() {
         log.info("memberService class={}", memberService.getClass());
