@@ -7,12 +7,20 @@ import org.junit.jupiter.api.Test;
 @Slf4j
 public class CheckedTest {
 
+    /**
+     * service에서 예외를 잡는 테스트
+     * 예외가 올라오지 않는다.
+     */
     @Test
     void checked_catch() {
         Service service = new Service();
         service.callCatch();
     }
 
+    /**
+     * service에서 예외를 던지는 테스트
+     * repository에서 발생한 예외가 최상위까지 올라왔다.
+     */
     @Test
     void checked_throw() {
         Service service = new Service();
@@ -55,6 +63,9 @@ public class CheckedTest {
         }
     }
 
+    /**
+     * 체크 예외 발생
+     */
     static class Repository {
         public void call() throws MyCheckedException{
             throw new MyCheckedException("ex");
