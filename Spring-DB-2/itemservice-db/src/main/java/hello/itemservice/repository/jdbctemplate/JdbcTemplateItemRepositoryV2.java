@@ -23,10 +23,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 /**
- * NamedParameterJdbcTemplate SqlParameterSource - BeanPropertySqlParameterSource - MapSqlParameterSource
- * <p>
+ * NamedParameterJdbcTemplate
+ * SqlParameterSource
+ * - BeanPropertySqlParameterSource
+ * - MapSqlParameterSource
  * Map
- * <p>
  * BeanPropertyRowMapper
  */
 @Slf4j
